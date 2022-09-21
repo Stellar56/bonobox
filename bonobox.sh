@@ -54,8 +54,8 @@ FONCBASHRC
 # contrôle installation
 if [ ! -f "$NGINXENABLE"/rutorrent.conf ]; then
 	# contröle wget
-	if [ ! -f "$CMDWGET" ]; then
-		"$CMDAPTGET" install -y wget &>/dev/null
+if [ ! -f "$CMDWGET" ]; then
+	"$CMDAPTGET" install -y wget &>/dev/null
 fi
 		# log de l'installation
 		exec > >("$CMDTEE" "/tmp/install.log") 2>&1
@@ -212,6 +212,7 @@ fi
 		python3-pip \
 		python3-venv \
 		python3-dev \
+		python3-six \
 		rar \
 		screen \
 		sox \
@@ -486,7 +487,7 @@ EOF
 	"$CMDECHO" ""; set "166" "134"; FONCTXT "$1" "$2"; "$CMDECHO" -e "${CBLUE}$TXT1${CEND}${CGREEN}$TXT2${CEND}"; "$CMDECHO" ""
 
 		# configuration user rutorrent.conf
-		FONCRTCONF "$USERMAJ"  "$PORT" "$USER"
+		FONCRTCONF "$USERMAJ" "$PORT" "$USER"
 
 		# config.php
 	"$CMDMKDIR" "$RUCONFUSER"/"$USER"
@@ -556,15 +557,15 @@ if FONCYES "$SERVFTP"; then
 	"$CMDCP" -f "$FILES"/vsftpd/vsftpd.conf /etc/vsftpd.conf
 
 		# récupèration certificats nginx
-	"$CMDCP" -f "$NGINXSSL"/server.crt  /etc/ssl/private/vsftpd.cert.pem
-	"$CMDCP" -f "$NGINXSSL"/server.key  /etc/ssl/private/vsftpd.key.pem
+	"$CMDCP" -f "$NGINXSSL"/server.crt /etc/ssl/private/vsftpd.cert.pem
+	"$CMDCP" -f "$NGINXSSL"/server.key /etc/ssl/private/vsftpd.key.pem
 
 	"$CMDTOUCH" /etc/vsftpd.chroot_list
 	"$CMDTOUCH" /var/log/vsftpd.log
 	"$CMDCHMOD" 600 /var/log/vsftpd.log
 		FONCSERVICE restart vsftpd
 
-	"$CMDSED"  -i "/vsftpd/,+10d" /etc/fail2ban/jail.local
+	"$CMDSED" -i "/vsftpd/,+10d" /etc/fail2ban/jail.local
 
 "$CMDCAT" <<- EOF >> /etc/fail2ban/jail.local
 		[vsftpd]
