@@ -13,7 +13,7 @@ VERSION=$("$CMDCAT" /etc/debian_version)
 
 if [[ "$VERSION" = 11.* ]]; then
 	DEBNUMBER="Debian_11.0.deb"
-	DEBNAME="bulleye"
+	DEBNAME="bullseye"
 
 elif [[ "$VERSION" = 10.* ]]; then
 	DEBNUMBER="Debian_10.0.deb"
@@ -31,8 +31,8 @@ LIBTORRENT="v0.13.8"
 RTORRENT="v0.9.8"
 
 #LIBZEN0="0.4.37"
-#LIBMEDIAINFO0="22.06"
-#MEDIAINFO="22.06"
+#LIBMEDIAINFO0="19.04"
+#MEDIAINFO="19.04"
 
 RUTORRENT="/var/www/rutorrent"
 RUPLUGINS="/var/www/rutorrent/plugins"
