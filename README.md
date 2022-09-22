@@ -24,7 +24,7 @@ apt-get update && apt-get upgrade -y
 apt-get install git lsb-release -y
 
 cd /tmp
-git clone https://github.com/exrat/bonobox
+git clone https://github.com/stellar56/bonobox
 cd bonobox
 chmod a+x bonobox.sh && ./bonobox.sh --fr
 ```
@@ -57,6 +57,8 @@ chmod a+x bonobox.sh && ./bonobox.sh --ptbr
 Pour gérer vos utilisateurs ultérieurement, il vous suffit de relancer le script
 
 ![caps2](https://raw.github.com/exrat/rutorrent-bonobox/master/files/caps_script02.png)
+
+### DEV xmlrpc-c advanced
 
 ### Disclaimer
 Ce script est proposé à des fins d'expérimentation uniquement, le téléchargement d’oeuvre copyrightées est illégal.
