@@ -11,8 +11,14 @@ FONCDEP () {
 		deb http://nginx.org/packages/debian/ $1 nginx
 		deb-src http://nginx.org/packages/debian/ $1 nginx
 	EOF
+	
+	"$CMDCAT" <<- EOF > "$SOURCES"/sid.list
+	# dépôt sid main non-free
+	deb http://deb.debian.org/debian/ $1 main contrib non-free
+	deb-src http://deb.debian.org/debian/ $1 main contrib non-free
+EOF
 
-	"$CMDCAT" <<- EOF > "$SOURCES"/multimedia.list
+"$CMDCAT" <<- EOF > "$SOURCES"/multimedia.list
 		# dépôt multimedia
 		deb http://www.deb-multimedia.org $1 main non-free
 	EOF
