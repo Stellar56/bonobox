@@ -27,21 +27,21 @@ EOF
 "$CMDCAT" <<- EOF > "$SOURCES"/testing-update.list
 # Debian testing mises à jour, auparavant connues sous le nom de volatiles
 # testing-updates, previously known as volatile
-deb http://deb.debian.org/debian/ testing-updates $1 main non-free
-deb-src http://deb.debian.org/debian/ testing-updates $1 main non-free
+deb http://deb.debian.org/debian/ testing-updates $1 main contrib non-free
+deb-src http://deb.debian.org/debian/ testing-updates $1 main contrib non-free
 EOF
 
 "$CMDCAT" <<- EOF > "$SOURCES"/multimedia.list
 		# dépôt multimedia
 		deb http://www.deb-multimedia.org $1 main non-free
-	EOF
+EOF
 
-	"$CMDCAT" <<- EOF > "$SOURCES"/sury-php.list
+"$CMDCAT" <<- EOF > "$SOURCES"/sury-php.list
 		# dépôt sury php 7.4
 		deb https://packages.sury.org/php/ $1 main
-	EOF
+EOF
 
-	# clés
+		# clés
 	"$CMDWGET" https://packages.sury.org/php/apt.gpg -O sury.gpg && "$CMDAPTKEY" add sury.gpg 2>/dev/null
 	"$CMDWGET" http://nginx.org/keys/nginx_signing.key && "$CMDAPTKEY" add nginx_signing.key 2>/dev/null
 	"$CMDAPTGET" update -oAcquire::AllowInsecureRepositories=true && "$CMDAPTGET" install -y --allow-unauthenticated deb-multimedia-keyring
