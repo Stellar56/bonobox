@@ -227,11 +227,12 @@ fi
 if [[ "$VERSION" = 11.* ]]; then
 	"$CMDAPTGET" install -y \
 		libtinyxml2-8 \
-		python-is-python2
+		python-is-python3
 				
 elif [[ "$VERSION" = 10.* ]]; then
 	"$CMDAPTGET" install -y \
 		libtinyxml2-6a
+		python-is-python3
 fi
 
 	"$CMDECHO" ""; set "136" "134"; FONCTXT "$1" "$2"; "$CMDECHO" -e "${CBLUE}$TXT1${CEND}${CGREEN}$TXT2${CEND}"; "$CMDECHO" ""
